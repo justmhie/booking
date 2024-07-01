@@ -1,0 +1,27 @@
+<p>
+  <strong>Name:</strong>
+  <%= @hotel.hotel_name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @hotel.description %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @hotel.location %>
+</p>
+
+<p>
+  <strong>Contact Details:</strong>
+  <%= @hotel.contact_details %>
+</p>
+
+<p>
+  <strong>Amenities:</strong>
+  <%= @hotel.amenities %>
+</p>
+
+<%= link_to 'Edit', edit_hotel_path(@hotel) %> |
+<%= link_to 'Back', hotels_path %>

@@ -1,0 +1,27 @@
+<p>
+  <strong>Hotel:</strong>
+  <%= @room_type.hotel.hotel_name %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @room_type.type %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @room_type.description %>
+</p>
+
+<p>
+  <strong>Capacity:</strong>
+  <%= @room_type.capacity %>
+</p>
+
+<p>
+  <strong>Price per Night:</strong>
+  <%= @room_type.price_per_night %>
+</p>
+
+<%= link_to 'Edit', edit_room_type_path(@room_type) %> |
+<%= link_to 'Back', room_types_path %>

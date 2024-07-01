@@ -1,0 +1,32 @@
+<p>
+  <strong>User:</strong>
+  <%= @booking.user.email %>
+</p>
+
+<p>
+  <strong>Hotel:</strong>
+  <%= @booking.hotel.hotel_name %>
+</p>
+
+<p>
+  <strong>Check In Date:</strong>
+  <%= @booking.check_in_date %>
+</p>
+
+<p>
+  <strong>Check Out Date:</strong>
+  <%= @booking.check_out_date %>
+</p>
+
+<p>
+  <strong>Room Type:</strong>
+  <%= @booking.room_type.type %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @booking.status %>
+</p>
+
+<%= link_to 'Edit', edit_booking_path(@booking) %> |
+<%= link_to 'Back', bookings_path %>
