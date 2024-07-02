@@ -1,2 +1,19 @@
-<h1>Reviews#edit</h1>
-<p>Find me in app/views/reviews/edit.html.erb</p>
+<h1>Edit Review</h1>
+<%= form_for @review do |f| %>
+  <div>
+    <%= f.label :hotel_id, 'Hotel' %>
+    <%= f.collection_select :hotel_id, Hotel.all, :id, :hotel_name %>
+  </div>
+  <div>
+    <%= f.label :rating %>
+    <%= f.number_field :rating, in: 1..5 %>
+  </div>
+  <div>
+    <%= f.label :comment %>
+    <%= f.text_area :comment %>
+  </div>
+  <div>
+    <%= f.submit 'Update Review' %>
+  </div>
+<% end %>
+<%= link_to 'Back', reviews_path %>

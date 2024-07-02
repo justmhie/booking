@@ -1,0 +1,559 @@
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (4.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments"[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" datetime(6) NOT NULL)[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (3.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs"[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar NOT NULL, "filename" varchar NOT NULL, "content_type" varchar, "metadata" text, "service_name" varchar NOT NULL, "byte_size" bigint NOT NULL, "checksum" varchar, "created_at" datetime(6) NOT NULL)[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (3.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_variant_records"[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "blob_id" bigint NOT NULL, "variation_digest" varchar NOT NULL)[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[35m (3.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "bookings"[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "bookings" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "hotel_id" integer NOT NULL, "check_in_date" date, "check_out_date" date, "room_type_id" integer NOT NULL, "status" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE INDEX "index_bookings_on_hotel_id" ON "bookings" ("hotel_id")[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE INDEX "index_bookings_on_room_type_id" ON "bookings" ("room_type_id")[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE INDEX "index_bookings_on_user_id" ON "bookings" ("user_id")[0m
+  [1m[35m (3.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "hotels"[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "hotels" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "hotel_name" varchar, "description" text, "location" varchar, "contact_details" varchar, "amenities" text, "photo_gallery" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (3.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "reviews"[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "hotel_id" integer NOT NULL, "rating" integer, "comment" text, "date" date, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_hotel_id" ON "reviews" ("hotel_id")[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_user_id" ON "reviews" ("user_id")[0m
+  [1m[35m (3.8ms)[0m  [1m[35mDROP TABLE IF EXISTS "room_types"[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "room_types" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "hotel_id" integer NOT NULL, "type" varchar, "description" text, "capacity" integer, "price_per_night" decimal, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE INDEX "index_room_types_on_hotel_id" ON "room_types" ("hotel_id")[0m
+  [1m[35m (3.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "user_roles"[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "user_roles" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "role" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE INDEX "index_user_roles_on_user_id" ON "user_roles" ("user_id")[0m
+  [1m[35m (3.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar, "last_name" varchar, "email" varchar, "password_digest" varchar, "mobile_number" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aactive_storage_attachments" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" integer NOT NULL, "blob_id" integer NOT NULL, "created_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "tindex_aactive_storage_attachments_uniqueness" ON "aactive_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aactive_storage_attachments_on_blob_id" ON "aactive_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aactive_storage_attachments" ("id","name","record_type","record_id","blob_id","created_at")
+                     SELECT "id","name","record_type","record_id","blob_id","created_at" FROM "active_storage_attachments"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "active_storage_attachments"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" integer NOT NULL, "blob_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("id","name","record_type","record_id","blob_id","created_at")
+                     SELECT "id","name","record_type","record_id","blob_id","created_at" FROM "aactive_storage_attachments"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aactive_storage_attachments"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aactive_storage_variant_records" ("id" integer NOT NULL PRIMARY KEY, "blob_id" integer NOT NULL, "variation_digest" varchar NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "tindex_aactive_storage_variant_records_uniqueness" ON "aactive_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aactive_storage_variant_records" ("id","blob_id","variation_digest")
+                     SELECT "id","blob_id","variation_digest" FROM "active_storage_variant_records"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "active_storage_variant_records"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" integer NOT NULL PRIMARY KEY, "blob_id" integer NOT NULL, "variation_digest" varchar NOT NULL, CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "active_storage_variant_records" ("id","blob_id","variation_digest")
+                     SELECT "id","blob_id","variation_digest" FROM "aactive_storage_variant_records"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aactive_storage_variant_records"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "abookings" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "hotel_id" integer NOT NULL, "check_in_date" date DEFAULT NULL, "check_out_date" date DEFAULT NULL, "room_type_id" integer NOT NULL, "status" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_abookings_on_user_id" ON "abookings" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_abookings_on_room_type_id" ON "abookings" ("room_type_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_abookings_on_hotel_id" ON "abookings" ("hotel_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "abookings" ("id","user_id","hotel_id","check_in_date","check_out_date","room_type_id","status","created_at","updated_at")
+                     SELECT "id","user_id","hotel_id","check_in_date","check_out_date","room_type_id","status","created_at","updated_at" FROM "bookings"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "bookings"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "bookings" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "hotel_id" integer NOT NULL, "check_in_date" date DEFAULT NULL, "check_out_date" date DEFAULT NULL, "room_type_id" integer NOT NULL, "status" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_5779f034b0"
+FOREIGN KEY ("hotel_id")
+  REFERENCES "hotels" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_bookings_on_hotel_id" ON "bookings" ("hotel_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_bookings_on_room_type_id" ON "bookings" ("room_type_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_bookings_on_user_id" ON "bookings" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "bookings" ("id","user_id","hotel_id","check_in_date","check_out_date","room_type_id","status","created_at","updated_at")
+                     SELECT "id","user_id","hotel_id","check_in_date","check_out_date","room_type_id","status","created_at","updated_at" FROM "abookings"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "abookings"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "abookings" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "hotel_id" integer NOT NULL, "check_in_date" date DEFAULT NULL, "check_out_date" date DEFAULT NULL, "room_type_id" integer NOT NULL, "status" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_abookings_on_user_id" ON "abookings" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_abookings_on_room_type_id" ON "abookings" ("room_type_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_abookings_on_hotel_id" ON "abookings" ("hotel_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "abookings" ("id","user_id","hotel_id","check_in_date","check_out_date","room_type_id","status","created_at","updated_at")
+                     SELECT "id","user_id","hotel_id","check_in_date","check_out_date","room_type_id","status","created_at","updated_at" FROM "bookings"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "bookings"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "bookings" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "hotel_id" integer NOT NULL, "check_in_date" date DEFAULT NULL, "check_out_date" date DEFAULT NULL, "room_type_id" integer NOT NULL, "status" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_5779f034b0"
+FOREIGN KEY ("hotel_id")
+  REFERENCES "hotels" ("id")
+, CONSTRAINT "fk_rails_dedb8e6580"
+FOREIGN KEY ("room_type_id")
+  REFERENCES "room_types" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_bookings_on_hotel_id" ON "bookings" ("hotel_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_bookings_on_room_type_id" ON "bookings" ("room_type_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_bookings_on_user_id" ON "bookings" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "bookings" ("id","user_id","hotel_id","check_in_date","check_out_date","room_type_id","status","created_at","updated_at")
+                     SELECT "id","user_id","hotel_id","check_in_date","check_out_date","room_type_id","status","created_at","updated_at" FROM "abookings"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "abookings"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "abookings" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "hotel_id" integer NOT NULL, "check_in_date" date DEFAULT NULL, "check_out_date" date DEFAULT NULL, "room_type_id" integer NOT NULL, "status" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_abookings_on_user_id" ON "abookings" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_abookings_on_room_type_id" ON "abookings" ("room_type_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_abookings_on_hotel_id" ON "abookings" ("hotel_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "abookings" ("id","user_id","hotel_id","check_in_date","check_out_date","room_type_id","status","created_at","updated_at")
+                     SELECT "id","user_id","hotel_id","check_in_date","check_out_date","room_type_id","status","created_at","updated_at" FROM "bookings"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "bookings"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "bookings" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "hotel_id" integer NOT NULL, "check_in_date" date DEFAULT NULL, "check_out_date" date DEFAULT NULL, "room_type_id" integer NOT NULL, "status" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_dedb8e6580"
+FOREIGN KEY ("room_type_id")
+  REFERENCES "room_types" ("id")
+, CONSTRAINT "fk_rails_5779f034b0"
+FOREIGN KEY ("hotel_id")
+  REFERENCES "hotels" ("id")
+, CONSTRAINT "fk_rails_ef0571f117"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_bookings_on_hotel_id" ON "bookings" ("hotel_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_bookings_on_room_type_id" ON "bookings" ("room_type_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_bookings_on_user_id" ON "bookings" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "bookings" ("id","user_id","hotel_id","check_in_date","check_out_date","room_type_id","status","created_at","updated_at")
+                     SELECT "id","user_id","hotel_id","check_in_date","check_out_date","room_type_id","status","created_at","updated_at" FROM "abookings"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "abookings"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "areviews" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "hotel_id" integer NOT NULL, "rating" integer DEFAULT NULL, "comment" text DEFAULT NULL, "date" date DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_areviews_on_user_id" ON "areviews" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_areviews_on_hotel_id" ON "areviews" ("hotel_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "areviews" ("id","user_id","hotel_id","rating","comment","date","created_at","updated_at")
+                     SELECT "id","user_id","hotel_id","rating","comment","date","created_at","updated_at" FROM "reviews"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "reviews"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "hotel_id" integer NOT NULL, "rating" integer DEFAULT NULL, "comment" text DEFAULT NULL, "date" date DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_b9f3d67017"
+FOREIGN KEY ("hotel_id")
+  REFERENCES "hotels" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_hotel_id" ON "reviews" ("hotel_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_user_id" ON "reviews" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "reviews" ("id","user_id","hotel_id","rating","comment","date","created_at","updated_at")
+                     SELECT "id","user_id","hotel_id","rating","comment","date","created_at","updated_at" FROM "areviews"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "areviews"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "areviews" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "hotel_id" integer NOT NULL, "rating" integer DEFAULT NULL, "comment" text DEFAULT NULL, "date" date DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_areviews_on_user_id" ON "areviews" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_areviews_on_hotel_id" ON "areviews" ("hotel_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "areviews" ("id","user_id","hotel_id","rating","comment","date","created_at","updated_at")
+                     SELECT "id","user_id","hotel_id","rating","comment","date","created_at","updated_at" FROM "reviews"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "reviews"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "hotel_id" integer NOT NULL, "rating" integer DEFAULT NULL, "comment" text DEFAULT NULL, "date" date DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_b9f3d67017"
+FOREIGN KEY ("hotel_id")
+  REFERENCES "hotels" ("id")
+, CONSTRAINT "fk_rails_74a66bd6c5"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_hotel_id" ON "reviews" ("hotel_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_user_id" ON "reviews" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "reviews" ("id","user_id","hotel_id","rating","comment","date","created_at","updated_at")
+                     SELECT "id","user_id","hotel_id","rating","comment","date","created_at","updated_at" FROM "areviews"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "areviews"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aroom_types" ("id" integer NOT NULL PRIMARY KEY, "hotel_id" integer NOT NULL, "type" varchar DEFAULT NULL, "description" text DEFAULT NULL, "capacity" integer DEFAULT NULL, "price_per_night" decimal DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aroom_types_on_hotel_id" ON "aroom_types" ("hotel_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aroom_types" ("id","hotel_id","type","description","capacity","price_per_night","created_at","updated_at")
+                     SELECT "id","hotel_id","type","description","capacity","price_per_night","created_at","updated_at" FROM "room_types"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "room_types"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "room_types" ("id" integer NOT NULL PRIMARY KEY, "hotel_id" integer NOT NULL, "type" varchar DEFAULT NULL, "description" text DEFAULT NULL, "capacity" integer DEFAULT NULL, "price_per_night" decimal DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_67d8b966ea"
+FOREIGN KEY ("hotel_id")
+  REFERENCES "hotels" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_room_types_on_hotel_id" ON "room_types" ("hotel_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "room_types" ("id","hotel_id","type","description","capacity","price_per_night","created_at","updated_at")
+                     SELECT "id","hotel_id","type","description","capacity","price_per_night","created_at","updated_at" FROM "aroom_types"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aroom_types"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (3.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "auser_roles" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "role" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_auser_roles_on_user_id" ON "auser_roles" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "auser_roles" ("id","user_id","role","created_at","updated_at")
+                     SELECT "id","user_id","role","created_at","updated_at" FROM "user_roles"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "user_roles"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "user_roles" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "role" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_318345354e"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_user_roles_on_user_id" ON "user_roles" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "user_roles" ("id","user_id","role","created_at","updated_at")
+                     SELECT "id","user_id","role","created_at","updated_at" FROM "auser_roles"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "auser_roles"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "273a2e913c5e9ab59f2852d60b4220b956c84146"], ["created_at", "2024-07-02 06:46:32.557160"], ["updated_at", "2024-07-02 06:46:32.557160"]]
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments"[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" datetime(6) NOT NULL)[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs"[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar NOT NULL, "filename" varchar NOT NULL, "content_type" varchar, "metadata" text, "service_name" varchar NOT NULL, "byte_size" bigint NOT NULL, "checksum" varchar, "created_at" datetime(6) NOT NULL)[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_variant_records"[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "blob_id" bigint NOT NULL, "variation_digest" varchar NOT NULL)[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "bookings"[0m
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE TABLE "bookings" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "hotel_id" integer NOT NULL, "check_in_date" date, "check_out_date" date, "room_type_id" integer NOT NULL, "status" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE INDEX "index_bookings_on_hotel_id" ON "bookings" ("hotel_id")[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE INDEX "index_bookings_on_room_type_id" ON "bookings" ("room_type_id")[0m
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE INDEX "index_bookings_on_user_id" ON "bookings" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "hotels"[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "hotels" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "hotel_name" varchar, "description" text, "location" varchar, "contact_details" varchar, "amenities" text, "photo_gallery" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "reviews"[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "hotel_id" integer NOT NULL, "rating" integer, "comment" text, "date" date, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_hotel_id" ON "reviews" ("hotel_id")[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_user_id" ON "reviews" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "room_types"[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "room_types" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "hotel_id" integer NOT NULL, "type" varchar, "description" text, "capacity" integer, "price_per_night" decimal, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE INDEX "index_room_types_on_hotel_id" ON "room_types" ("hotel_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "user_roles"[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "user_roles" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "role" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE INDEX "index_user_roles_on_user_id" ON "user_roles" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar, "last_name" varchar, "email" varchar, "password_digest" varchar, "mobile_number" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aactive_storage_attachments" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" integer NOT NULL, "blob_id" integer NOT NULL, "created_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "tindex_aactive_storage_attachments_uniqueness" ON "aactive_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aactive_storage_attachments_on_blob_id" ON "aactive_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aactive_storage_attachments" ("id","name","record_type","record_id","blob_id","created_at")
+                     SELECT "id","name","record_type","record_id","blob_id","created_at" FROM "active_storage_attachments"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "active_storage_attachments"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" integer NOT NULL, "blob_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("id","name","record_type","record_id","blob_id","created_at")
+                     SELECT "id","name","record_type","record_id","blob_id","created_at" FROM "aactive_storage_attachments"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aactive_storage_attachments"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (3.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aactive_storage_variant_records" ("id" integer NOT NULL PRIMARY KEY, "blob_id" integer NOT NULL, "variation_digest" varchar NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "tindex_aactive_storage_variant_records_uniqueness" ON "aactive_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aactive_storage_variant_records" ("id","blob_id","variation_digest")
+                     SELECT "id","blob_id","variation_digest" FROM "active_storage_variant_records"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "active_storage_variant_records"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" integer NOT NULL PRIMARY KEY, "blob_id" integer NOT NULL, "variation_digest" varchar NOT NULL, CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "active_storage_variant_records" ("id","blob_id","variation_digest")
+                     SELECT "id","blob_id","variation_digest" FROM "aactive_storage_variant_records"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aactive_storage_variant_records"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "abookings" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "hotel_id" integer NOT NULL, "check_in_date" date DEFAULT NULL, "check_out_date" date DEFAULT NULL, "room_type_id" integer NOT NULL, "status" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_abookings_on_user_id" ON "abookings" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_abookings_on_room_type_id" ON "abookings" ("room_type_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_abookings_on_hotel_id" ON "abookings" ("hotel_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "abookings" ("id","user_id","hotel_id","check_in_date","check_out_date","room_type_id","status","created_at","updated_at")
+                     SELECT "id","user_id","hotel_id","check_in_date","check_out_date","room_type_id","status","created_at","updated_at" FROM "bookings"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "bookings"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "bookings" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "hotel_id" integer NOT NULL, "check_in_date" date DEFAULT NULL, "check_out_date" date DEFAULT NULL, "room_type_id" integer NOT NULL, "status" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_5779f034b0"
+FOREIGN KEY ("hotel_id")
+  REFERENCES "hotels" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_bookings_on_hotel_id" ON "bookings" ("hotel_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_bookings_on_room_type_id" ON "bookings" ("room_type_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_bookings_on_user_id" ON "bookings" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "bookings" ("id","user_id","hotel_id","check_in_date","check_out_date","room_type_id","status","created_at","updated_at")
+                     SELECT "id","user_id","hotel_id","check_in_date","check_out_date","room_type_id","status","created_at","updated_at" FROM "abookings"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "abookings"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "abookings" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "hotel_id" integer NOT NULL, "check_in_date" date DEFAULT NULL, "check_out_date" date DEFAULT NULL, "room_type_id" integer NOT NULL, "status" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_abookings_on_user_id" ON "abookings" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_abookings_on_room_type_id" ON "abookings" ("room_type_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_abookings_on_hotel_id" ON "abookings" ("hotel_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "abookings" ("id","user_id","hotel_id","check_in_date","check_out_date","room_type_id","status","created_at","updated_at")
+                     SELECT "id","user_id","hotel_id","check_in_date","check_out_date","room_type_id","status","created_at","updated_at" FROM "bookings"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "bookings"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "bookings" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "hotel_id" integer NOT NULL, "check_in_date" date DEFAULT NULL, "check_out_date" date DEFAULT NULL, "room_type_id" integer NOT NULL, "status" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_5779f034b0"
+FOREIGN KEY ("hotel_id")
+  REFERENCES "hotels" ("id")
+, CONSTRAINT "fk_rails_dedb8e6580"
+FOREIGN KEY ("room_type_id")
+  REFERENCES "room_types" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_bookings_on_hotel_id" ON "bookings" ("hotel_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_bookings_on_room_type_id" ON "bookings" ("room_type_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_bookings_on_user_id" ON "bookings" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "bookings" ("id","user_id","hotel_id","check_in_date","check_out_date","room_type_id","status","created_at","updated_at")
+                     SELECT "id","user_id","hotel_id","check_in_date","check_out_date","room_type_id","status","created_at","updated_at" FROM "abookings"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "abookings"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "abookings" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "hotel_id" integer NOT NULL, "check_in_date" date DEFAULT NULL, "check_out_date" date DEFAULT NULL, "room_type_id" integer NOT NULL, "status" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_abookings_on_user_id" ON "abookings" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_abookings_on_room_type_id" ON "abookings" ("room_type_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_abookings_on_hotel_id" ON "abookings" ("hotel_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "abookings" ("id","user_id","hotel_id","check_in_date","check_out_date","room_type_id","status","created_at","updated_at")
+                     SELECT "id","user_id","hotel_id","check_in_date","check_out_date","room_type_id","status","created_at","updated_at" FROM "bookings"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "bookings"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "bookings" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "hotel_id" integer NOT NULL, "check_in_date" date DEFAULT NULL, "check_out_date" date DEFAULT NULL, "room_type_id" integer NOT NULL, "status" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_dedb8e6580"
+FOREIGN KEY ("room_type_id")
+  REFERENCES "room_types" ("id")
+, CONSTRAINT "fk_rails_5779f034b0"
+FOREIGN KEY ("hotel_id")
+  REFERENCES "hotels" ("id")
+, CONSTRAINT "fk_rails_ef0571f117"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_bookings_on_hotel_id" ON "bookings" ("hotel_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_bookings_on_room_type_id" ON "bookings" ("room_type_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_bookings_on_user_id" ON "bookings" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "bookings" ("id","user_id","hotel_id","check_in_date","check_out_date","room_type_id","status","created_at","updated_at")
+                     SELECT "id","user_id","hotel_id","check_in_date","check_out_date","room_type_id","status","created_at","updated_at" FROM "abookings"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "abookings"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "areviews" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "hotel_id" integer NOT NULL, "rating" integer DEFAULT NULL, "comment" text DEFAULT NULL, "date" date DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_areviews_on_user_id" ON "areviews" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_areviews_on_hotel_id" ON "areviews" ("hotel_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "areviews" ("id","user_id","hotel_id","rating","comment","date","created_at","updated_at")
+                     SELECT "id","user_id","hotel_id","rating","comment","date","created_at","updated_at" FROM "reviews"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "reviews"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "hotel_id" integer NOT NULL, "rating" integer DEFAULT NULL, "comment" text DEFAULT NULL, "date" date DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_b9f3d67017"
+FOREIGN KEY ("hotel_id")
+  REFERENCES "hotels" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_hotel_id" ON "reviews" ("hotel_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_user_id" ON "reviews" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "reviews" ("id","user_id","hotel_id","rating","comment","date","created_at","updated_at")
+                     SELECT "id","user_id","hotel_id","rating","comment","date","created_at","updated_at" FROM "areviews"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "areviews"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "areviews" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "hotel_id" integer NOT NULL, "rating" integer DEFAULT NULL, "comment" text DEFAULT NULL, "date" date DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_areviews_on_user_id" ON "areviews" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_areviews_on_hotel_id" ON "areviews" ("hotel_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "areviews" ("id","user_id","hotel_id","rating","comment","date","created_at","updated_at")
+                     SELECT "id","user_id","hotel_id","rating","comment","date","created_at","updated_at" FROM "reviews"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "reviews"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "hotel_id" integer NOT NULL, "rating" integer DEFAULT NULL, "comment" text DEFAULT NULL, "date" date DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_b9f3d67017"
+FOREIGN KEY ("hotel_id")
+  REFERENCES "hotels" ("id")
+, CONSTRAINT "fk_rails_74a66bd6c5"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_hotel_id" ON "reviews" ("hotel_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_user_id" ON "reviews" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "reviews" ("id","user_id","hotel_id","rating","comment","date","created_at","updated_at")
+                     SELECT "id","user_id","hotel_id","rating","comment","date","created_at","updated_at" FROM "areviews"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "areviews"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aroom_types" ("id" integer NOT NULL PRIMARY KEY, "hotel_id" integer NOT NULL, "type" varchar DEFAULT NULL, "description" text DEFAULT NULL, "capacity" integer DEFAULT NULL, "price_per_night" decimal DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aroom_types_on_hotel_id" ON "aroom_types" ("hotel_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aroom_types" ("id","hotel_id","type","description","capacity","price_per_night","created_at","updated_at")
+                     SELECT "id","hotel_id","type","description","capacity","price_per_night","created_at","updated_at" FROM "room_types"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "room_types"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "room_types" ("id" integer NOT NULL PRIMARY KEY, "hotel_id" integer NOT NULL, "type" varchar DEFAULT NULL, "description" text DEFAULT NULL, "capacity" integer DEFAULT NULL, "price_per_night" decimal DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_67d8b966ea"
+FOREIGN KEY ("hotel_id")
+  REFERENCES "hotels" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_room_types_on_hotel_id" ON "room_types" ("hotel_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "room_types" ("id","hotel_id","type","description","capacity","price_per_night","created_at","updated_at")
+                     SELECT "id","hotel_id","type","description","capacity","price_per_night","created_at","updated_at" FROM "aroom_types"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aroom_types"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "auser_roles" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "role" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_auser_roles_on_user_id" ON "auser_roles" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "auser_roles" ("id","user_id","role","created_at","updated_at")
+                     SELECT "id","user_id","role","created_at","updated_at" FROM "user_roles"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "user_roles"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "user_roles" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "role" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_318345354e"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_user_roles_on_user_id" ON "user_roles" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "user_roles" ("id","user_id","role","created_at","updated_at")
+                     SELECT "id","user_id","role","created_at","updated_at" FROM "auser_roles"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "auser_roles"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (6.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20240702031639)[0m
+  [1m[35m (3.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20240701054328),
+(20240701054339),
+(20240701054349),
+(20240701054620),
+(20240701054813),
+(20240701055002);
+
+[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2024-07-02 06:46:32.839604"], ["updated_at", "2024-07-02 06:46:32.839604"]]
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.2ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2024-07-02 06:46:32.846932"], ["key", "environment"]]
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "273a2e913c5e9ab59f2852d60b4220b956c84146"], ["created_at", "2024-07-02 06:46:32.855260"], ["updated_at", "2024-07-02 06:46:32.855260"]]
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "aly@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "mobile_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["first_name", "Aly"], ["last_name", "Mhie"], ["email", "aly@example.com"], ["password_digest", "[FILTERED]"], ["mobile_number", "1234567890"], ["created_at", "2024-07-02 06:46:33.122853"], ["updated_at", "2024-07-02 06:46:33.122853"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kim@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "mobile_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["first_name", "Kim"], ["last_name", "Ralp"], ["email", "kim@example.com"], ["password_digest", "[FILTERED]"], ["mobile_number", "2134567890"], ["created_at", "2024-07-02 06:46:33.367959"], ["updated_at", "2024-07-02 06:46:33.367959"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUserRole Create (0.2ms)[0m  [1m[32mINSERT INTO "user_roles" ("user_id", "role", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 1], ["role", "admin"], ["created_at", "2024-07-02 06:46:33.385145"], ["updated_at", "2024-07-02 06:46:33.385145"]]
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUserRole Create (0.2ms)[0m  [1m[32mINSERT INTO "user_roles" ("user_id", "role", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 2], ["role", "customer"], ["created_at", "2024-07-02 06:46:33.390731"], ["updated_at", "2024-07-02 06:46:33.390731"]]
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[36mcommit transaction[0m

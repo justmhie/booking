@@ -1,2 +1,13 @@
-<h1>Reviews#index</h1>
-<p>Find me in app/views/reviews/index.html.erb</p>
+<h1>Reviews</h1>
+<ul>
+  <% @reviews.each do |review| %>
+    <li>
+      <%= review.user.first_name %> reviewed <%= review.hotel.hotel_name %>:
+      <%= review.rating %>/5
+      <%= review.comment.truncate(50) %>
+      <%= link_to 'Show', review_path(review) %>
+      <%= link_to 'Edit', edit_review_path(review) %> |
+      <%= link_to 'Delete', review_path(review), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </li>
+  <% end %>
+</ul>

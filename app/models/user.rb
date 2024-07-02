@@ -1,19 +1,13 @@
 class User < ApplicationRecord
+ 
   has_secure_password
-  has_one :user_role
   has_many :bookings
   has_many :reviews
 
+  validates :first_name, presence: true
+  validates :last_name, presence: true
   validates :email, presence: true, uniqueness: true
-
-  attribute :mobile_number, :string  
-
-  ROLES = {
-    customer: 'Customer',
-    admin: 'Admin'
-  }
-
-  def role?(role)
-    self.user_role.role == role.to_s
-  end
+  validates :mobile_number, presence: true
+  validates :password, presence: true, length: { minimum: 6 }, confirmation: true
+  validates :password_confirmation, presence: true
 end

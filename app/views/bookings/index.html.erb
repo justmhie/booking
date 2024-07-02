@@ -1,33 +1,29 @@
-<h1>All Bookings</h1>
-
+<h1>My Bookings</h1>
 <table>
   <thead>
     <tr>
-      <th>User</th>
       <th>Hotel</th>
-      <th>Check In Date</th>
-      <th>Check Out Date</th>
       <th>Room Type</th>
+      <th>Check-in Date</th>
+      <th>Check-out Date</th>
       <th>Status</th>
-      <th colspan="3"></th>
+      <th>Actions</th>
     </tr>
   </thead>
-
   <tbody>
     <% @bookings.each do |booking| %>
       <tr>
-        <td><%= booking.user.email %></td>
         <td><%= booking.hotel.hotel_name %></td>
+        <td><%= booking.room_type.type %></td>
         <td><%= booking.check_in_date %></td>
         <td><%= booking.check_out_date %></td>
-        <td><%= booking.room_type.type %></td>
         <td><%= booking.status %></td>
-        <td><%= link_to 'Show', booking %></td>
-        <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
-        <td><%= link_to 'Delete', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to 'Show', booking_path(booking) %>
+          <%= link_to 'Edit', edit_booking_path(booking) %>
+          <%= link_to 'Cancel', booking_path(booking), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<%= link_to 'New Booking', new_booking_path %>

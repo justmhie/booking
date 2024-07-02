@@ -1,6 +1,7 @@
 class HotelsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :set_hotel, only: [:show, :edit, :update, :destroy]
-  
+
   def index
     @hotels = Hotel.all
   end
@@ -10,9 +11,7 @@ class HotelsController < ApplicationController
 
   def new
     @hotel = Hotel.new
-  end
-
-  def edit
+    @hotel.room_types.build 
   end
 
   def create
@@ -24,6 +23,9 @@ class HotelsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   def update
     if @hotel.update(hotel_params)
       redirect_to @hotel, notice: 'Hotel was successfully updated.'
@@ -33,8 +35,9 @@ class HotelsController < ApplicationController
   end
 
   def destroy
-    @hotel.destroy
-    redirect_to hotels_url, notice: 'Hotel was successfully destroyed.'
+  @hotel = Hotel.find(params[:id])
+  @hotel.destroy
+  redirect_to hotels_path, notice: "Hotel deleted successfully"
   end
 
   private
@@ -44,6 +47,10 @@ class HotelsController < ApplicationController
   end
 
   def hotel_params
-    params.require(:hotel).permit(:hotel_name, :description, :location, :contact_details, :amenities, :photo_gallery)
+    params.require(:hotel).permit(
+      :hotel_name, :description, :location, :contact_details, :amenities,
+      photos: [],  # Permitting photos as an array
+      room_types_attributes: [:id, :type, :description, :capacity, :price_per_night, :_destroy]
+    )
   end
 end

@@ -1,2 +1,73 @@
-<h1>Hotels#new</h1>
-<p>Find me in app/views/hotels/new.html.erb</p>
+<!-- app/views/hotels/new.html.erb -->
+<h1>New Hotel</h1>
+<%= form_for @hotel, html: { multipart: true } do |f| %>
+  <div>
+    <%= f.label :hotel_name %>
+    <%= f.text_field :hotel_name %>
+  </div>
+  <div>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+  <div>
+    <%= f.label :location %>
+    <%= f.text_field :location %>
+  </div>
+  <div>
+    <%= f.label :contact_details %>
+    <%= f.text_field :contact_details %>
+  </div>
+  <div>
+    <%= f.label :amenities %>
+    <%= f.text_area :amenities %>
+  </div>
+
+  <div>
+    <%= f.label :photos, "Photo gallery" %>
+    <%= f.file_field :photos, multiple: true, accept: 'image/*' %>
+  </div>
+
+  <h2>Room Types</h2>
+  <%= f.fields_for :room_types do |room_form| %>
+    <div class="nested-fields">
+      <%= room_form.label :type %>
+      <%= room_form.text_field :type %>
+
+      <%= room_form.label :capacity %>
+      <%= room_form.number_field :capacity %>
+
+      <%= room_form.label :price_per_night %>
+      <%= room_form.number_field :price_per_night %>
+
+      <%= room_form.check_box :_destroy, class: 'remove-checkbox' %>
+      <%= room_form.label :_destroy, 'Remove' %>
+    </div>
+  <% end %>
+
+  <div>
+    <%= link_to 'Add Room Type', '#', id: 'add-room-type', class: 'btn btn-secondary', data: { target: 'room-type-template' } %>
+    <div style="display:none" id="room-type-template">
+      <%= f.fields_for :room_types, RoomType.new, child_index: 'NEW_RECORD' do |room_form| %>
+        <div class="nested-fields">
+          <%= room_form.label :type %>
+          <%= room_form.text_field :type %>
+
+          <%= room_form.label :capacity %>
+          <%= room_form.number_field :capacity %>
+
+          <%= room_form.label :price_per_night %>
+          <%= room_form.number_field :price_per_night %>
+
+          <%= room_form.check_box :_destroy, class: 'remove-checkbox' %>
+          <%= room_form.label :_destroy, 'Remove' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div>
+    <%= f.submit 'Create Hotel' %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', hotels_path %>
